@@ -1,0 +1,77 @@
+var reviews = [
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+];
+
+
+function classifyReviewsByCost(reviews) {
+  var h = 0;
+  var a = 0;
+  var l = 0;
+  
+  for (i=0; i < reviews.length; i++){
+    if (reviews[i].cost == 'high'){
+      h++;
+    }
+    else if (reviews[i].cost == 'average'){
+      a++;
+    }
+    else{
+      l++;
+    }
+  }
+  
+    return {
+      'high': h, 
+      'average': a,
+      'low-average': l
+    };
+  
+}
+
+console.log(classifyReviewsByCost(reviews));
+
+__________
+
+var reviews = [
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+];
+
+
+function classifyReviewsByCost(reviews) {
+  var high = 0;
+  var low  = 0;
+  var ave = 0;
+  
+  var h = reviews.reduce(function(obj, review){
+    if (review.cost == 'high'){
+       high++;
+    }
+    else if(review.cost == 'average'){
+      ave++;
+    }
+    else{
+      low++;
+    }
+    
+    obj['high'] = high;
+    obj['average'] = ave;
+    obj['low-average'] = low;
+
+    return obj;
+    
+  }, {});
+
+  return h;
+}
+
+console.log(classifyReviewsByCost(reviews));
+
+
